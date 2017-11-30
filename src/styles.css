@@ -1,0 +1,19 @@
+.cc-image {
+    max-width: 80px;
+    display: block;
+    margin: auto;
+}
+
+#cc-grid tr {
+    font-size: 22px;
+}
+
+#cc-grid tbody tr {
+    height: 120px;
+}
+
+#cc-grid thead tr th,
+#cc-grid tbody tr td {
+    vertical-align: middle;
+    text-align: center;
+}

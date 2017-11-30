@@ -1,0 +1,9 @@
+<igx-grid id="cc-grid" [data]="data" [autoGenerate]="false">
+    <igx-column [field]="'imageUrl'" [header]="'Logo'">
+        <ng-template igxCell let-item="item">
+            <img class="cc-image" src="{{ item }}" />
+        </ng-template>
+    </igx-column>
+    <igx-column [field]="'name'" [header]="'Name'"></igx-column>
+    <igx-column [field]="'videosCount'" [header]="'Videos'"></igx-column>
+</igx-grid>
