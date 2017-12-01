@@ -1,3 +1,15 @@
+.app-col {
+    width: 50%;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
 .cc-image {
     max-width: 80px;
     display: block;
@@ -12,8 +24,8 @@
     height: 120px;
 }
 
-#cc-grid thead tr th,
-#cc-grid tbody tr td {
-    vertical-align: middle;
-    text-align: center;
-}
+    #cc-grid thead tr th,
+    #cc-grid tbody tr td {
+        vertical-align: middle;
+        text-align: center;
+    }

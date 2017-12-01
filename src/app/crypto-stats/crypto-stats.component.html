@@ -1,4 +1,4 @@
-<igx-grid id="cc-grid" [data]="data" [autoGenerate]="false">
+<igx-grid id="cc-grid" [data]="cryptocurrencies" [autoGenerate]="false">
     <igx-column [field]="'imageUrl'" [header]="'Logo'">
         <ng-template igxCell let-item="item">
             <img class="cc-image" src="{{ item }}" />
