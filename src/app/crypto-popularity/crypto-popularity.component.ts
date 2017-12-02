@@ -46,71 +46,54 @@ export class CryptoPopularityComponent implements OnInit {
         this.youTubeType = "video";
 
         this.searchIntervalSeconds = 3;
-        this.searchBeforeSeconds = 3600;
+        this.searchBeforeSeconds = 600;
 
         this.maxVideosDisplayed = 10;
 
-        //this.videos = [];
-        this.videos = [
-            new Video("TjTVsNpxnfM",
-                "Bitcoin Mining Value - Earn Bitcoin Satoshi",
-                "Bitcoin Mining Value - Earn Bitcoin Satoshi sign up here",
-                "https://i.ytimg.com/vi/oG5qC4e7LRo/mqdefault.jpg"
-            ),
-            new Video("TjTVsNpxnfM",
-                "Bitcoin Mining Value - Earn Bitcoin Satoshi",
-                "Bitcoin Mining Value - Earn Bitcoin Satoshi sign up here",
-                "https://i.ytimg.com/vi/oG5qC4e7LRo/mqdefault.jpg"
-            ),
-            new Video("TjTVsNpxnfM",
-                "Bitcoin Mining Value - Earn Bitcoin Satoshi",
-                "Bitcoin Mining Value - Earn Bitcoin Satoshi sign up here",
-                "https://i.ytimg.com/vi/oG5qC4e7LRo/mqdefault.jpg"
-            )
-        ];
+        this.videos = [];
     }
 
     ngOnInit() {
-        //Observable.interval(this.searchIntervalSeconds * 1000)
-        //    .startWith(1)
-        //    .map(() => {
-        //        let currentDate: Date = new Date();
-        //        let currentDateSeconds: number = currentDate.getSeconds();
+        Observable.interval(this.searchIntervalSeconds * 1000)
+            .startWith(1)
+            .map(() => {
+                let currentDate: Date = new Date();
+                let currentDateSeconds: number = currentDate.getSeconds();
 
-        //        let afterDate: Date = new Date(currentDate);
-        //        let beforeDate: Date = new Date(currentDate);
+                let afterDate: Date = new Date(currentDate);
+                let beforeDate: Date = new Date(currentDate);
 
-        //        afterDate.setSeconds(currentDateSeconds - this.searchBeforeSeconds - this.searchIntervalSeconds);
-        //        beforeDate.setSeconds(currentDateSeconds - this.searchBeforeSeconds);
+                afterDate.setSeconds(currentDateSeconds - this.searchBeforeSeconds - this.searchIntervalSeconds);
+                beforeDate.setSeconds(currentDateSeconds - this.searchBeforeSeconds);
 
-        //        return this.youtube.search(this.youTubeQuery, this.youTubeMaxResults, this.youTubeOrder, afterDate, beforeDate, this.youTubeType);
-        //    })
-        //    .switch()
-        //    .subscribe(
-        //    (results: Video[]) => {
-        //        for (var i = 0; i < results.length; i++) {
-        //            if (this.videoIds.has(results[i].id)) {
-        //                continue;
-        //            }
+                return this.youtube.search(this.youTubeQuery, this.youTubeMaxResults, this.youTubeOrder, afterDate, beforeDate, this.youTubeType);
+            })
+            .switch()
+            .subscribe(
+            (results: Video[]) => {
+                for (var i = 0; i < results.length; i++) {
+                    if (this.videoIds.has(results[i].id)) {
+                        continue;
+                    }
 
-        //            this.videoIds.add(results[i].id);
+                    this.videoIds.add(results[i].id);
 
-        //            for (var j = 0; j < this.cryptocurrencies.length; j++) {
-        //                if (results[i].title.toLowerCase().indexOf(this.cryptocurrencies[j].name.toLowerCase()) !== -1) {
-        //                    this.cryptocurrencies[j].videosCount++;                            
-        //                }
-        //            }
+                    for (var j = 0; j < this.cryptocurrencies.length; j++) {
+                        if (results[i].title.toLowerCase().indexOf(this.cryptocurrencies[j].name.toLowerCase()) !== -1) {
+                            this.cryptocurrencies[j].videosCount++;                            
+                        }
+                    }
 
-        //            this.videos.unshift(results[i]);
-        //            if (this.videos.length > this.maxVideosDisplayed) {
-        //                this.videos.pop();
-        //            }
-        //        }
+                    this.videos.unshift(results[i]);
+                    if (this.videos.length > this.maxVideosDisplayed) {
+                        this.videos.pop();
+                    }
+                }
 
-        //        console.log(results);
-        //    },
-        //    (err: any) => {
-        //        console.log(err);
-        //    });
+                console.log(results);
+            },
+            (err: any) => {
+                console.log(err);
+            });
     }
 }

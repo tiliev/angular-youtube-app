@@ -9,7 +9,8 @@ import {
     IgxCardModule,
     IgxButtonModule,
     IgxButtonGroupModule,
-    IgxRippleModule
+    IgxRippleModule,
+    IgxLabelModule
 } from "igniteui-js-blocks/main";
 
 import { CryptoStatsComponent } from './crypto-stats/crypto-stats.component';
@@ -32,6 +33,7 @@ import { YouTubeSearchInjecatbles } from './services/you-tube-search.injectable'
         IgxButtonGroupModule,
         IgxCardModule,
         IgxRippleModule,
+        IgxLabelModule,
         HttpModule
     ],
     providers: [ YouTubeSearchInjecatbles ],
