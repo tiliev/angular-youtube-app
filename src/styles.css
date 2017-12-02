@@ -11,9 +11,14 @@
 }
 
 .cc-image {
-    max-width: 80px;
+    max-width: 100px;
     display: block;
     margin: auto;
+}
+
+#cc-grid thead th div > .title {
+    display: table;
+    margin: 0 auto;
 }
 
 #cc-grid tr {
@@ -24,8 +29,13 @@
     height: 120px;
 }
 
-    #cc-grid thead tr th,
     #cc-grid tbody tr td {
         vertical-align: middle;
         text-align: center;
     }
+
+.card-wrapper {
+    max-width: 320px;
+    margin: 0 20px 20px 20px;
+    float: left;
+}

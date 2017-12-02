@@ -40,7 +40,7 @@ export class YouTubeSearchService {
                     return new Video(item.id.videoId,
                         item.snippet.title,
                         item.snippet.description,
-                        item.snippet.thumbnails.default.url);
+                        item.snippet.thumbnails.medium.url);
                 })
             })
     }

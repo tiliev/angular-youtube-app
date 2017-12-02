@@ -21,7 +21,7 @@ export class CryptoPopularityComponent implements OnInit {
     litecoin: Cryptocurrency = new Cryptocurrency(3, "Litecoin", "LTC", "/assets/images/litecoin.png");
     zcash: Cryptocurrency = new Cryptocurrency(4, "Zcash", "ZEC", "/assets/images/zcash.png");
 
-    cryptocurrencies: Cryptocurrency[];
+    cryptocurrencies: Cryptocurrency[];    
 
     videos: Video[];
 
@@ -30,8 +30,12 @@ export class CryptoPopularityComponent implements OnInit {
     youTubeOrder: string;
     youTubeType: string;
 
+    maxVideosDisplayed: number;
+
     searchIntervalSeconds: number;
     searchBeforeSeconds: number;
+
+    videoIds: Set<string> = new Set<string>();
 
     constructor(private youtube: YouTubeSearchService) {
         this.cryptocurrencies = [this.bitcoin, this.ethereum, this.litecoin, this.zcash];
@@ -43,11 +47,32 @@ export class CryptoPopularityComponent implements OnInit {
 
         this.searchIntervalSeconds = 3;
         this.searchBeforeSeconds = 3600;
+
+        this.maxVideosDisplayed = 10;
+
+        //this.videos = [];
+        this.videos = [
+            new Video("TjTVsNpxnfM",
+                "Bitcoin Mining Value - Earn Bitcoin Satoshi",
+                "Bitcoin Mining Value - Earn Bitcoin Satoshi sign up here",
+                "https://i.ytimg.com/vi/oG5qC4e7LRo/mqdefault.jpg"
+            ),
+            new Video("TjTVsNpxnfM",
+                "Bitcoin Mining Value - Earn Bitcoin Satoshi",
+                "Bitcoin Mining Value - Earn Bitcoin Satoshi sign up here",
+                "https://i.ytimg.com/vi/oG5qC4e7LRo/mqdefault.jpg"
+            ),
+            new Video("TjTVsNpxnfM",
+                "Bitcoin Mining Value - Earn Bitcoin Satoshi",
+                "Bitcoin Mining Value - Earn Bitcoin Satoshi sign up here",
+                "https://i.ytimg.com/vi/oG5qC4e7LRo/mqdefault.jpg"
+            )
+        ];
     }
 
     ngOnInit() {
         //Observable.interval(this.searchIntervalSeconds * 1000)
-        //    .startWith(1) // start after 1 millisecond
+        //    .startWith(1)
         //    .map(() => {
         //        let currentDate: Date = new Date();
         //        let currentDateSeconds: number = currentDate.getSeconds();
@@ -58,16 +83,27 @@ export class CryptoPopularityComponent implements OnInit {
         //        afterDate.setSeconds(currentDateSeconds - this.searchBeforeSeconds - this.searchIntervalSeconds);
         //        beforeDate.setSeconds(currentDateSeconds - this.searchBeforeSeconds);
 
-        //        return this.youtube.search(this.youTubeQuery, 50, this.youTubeOrder, afterDate, beforeDate, this.youTubeType);
+        //        return this.youtube.search(this.youTubeQuery, this.youTubeMaxResults, this.youTubeOrder, afterDate, beforeDate, this.youTubeType);
         //    })
         //    .switch()
         //    .subscribe(
         //    (results: Video[]) => {
         //        for (var i = 0; i < results.length; i++) {
+        //            if (this.videoIds.has(results[i].id)) {
+        //                continue;
+        //            }
+
+        //            this.videoIds.add(results[i].id);
+
         //            for (var j = 0; j < this.cryptocurrencies.length; j++) {
         //                if (results[i].title.toLowerCase().indexOf(this.cryptocurrencies[j].name.toLowerCase()) !== -1) {
-        //                    this.cryptocurrencies[j].videosCount++;
+        //                    this.cryptocurrencies[j].videosCount++;                            
         //                }
+        //            }
+
+        //            this.videos.unshift(results[i]);
+        //            if (this.videos.length > this.maxVideosDisplayed) {
+        //                this.videos.pop();
         //            }
         //        }
 
