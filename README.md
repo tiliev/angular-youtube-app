@@ -1,6 +1,6 @@
 # Cryptocurrencies Videos Real-Time
 
-This super basic showcase applicated created for [Hack-ng](https://www.facebook.com/events/1929696537285128/). It shows new videos uploaded to You Tube in real-time.
+This is a super basic showcase applicated created for [Hack-ng](https://www.facebook.com/events/1929696537285128/). It shows new videos uploaded to You Tube in real-time.
 
 ## How to run the project
 
